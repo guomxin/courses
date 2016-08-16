@@ -25,3 +25,9 @@ project/plugins/project/
 .cache-main
 .cache-tests
 bin/
+
+# octave
+octave-workspace
+
+# coursera
+token.mat
