@@ -82,7 +82,7 @@ J = J + lambda / 2 / m * (sum(sum(Theta1(:, 2:end) .* Theta1(:, 2:end))) + ...
 % Compute grad
 for i=1:m,
   a1 = X(i, :)';
-  z2 = Theta1 * x;
+  z2 = Theta1 * a1;
   a2 = [1; sigmoid(z2)];
   z3 = Theta2 * a2;
   a3 = sigmoid(z3);
@@ -99,12 +99,9 @@ end;
 Theta1_grad = 1 / m * Theta1_grad;
 Theta2_grad = 1 / m * Theta2_grad;
 
-
-
-
-
-
-
+% Regulization
+Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + lambda / m * Theta1(:, 2:end);
+Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + lambda / m * Theta2(:, 2:end);
 
 
 
