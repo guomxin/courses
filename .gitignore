@@ -25,6 +25,8 @@ project/plugins/project/
 .cache-main
 .cache-tests
 bin/
+.metadata/
+
 
 # octave
 octave-workspace

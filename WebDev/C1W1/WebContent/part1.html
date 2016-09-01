@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Part1</title>
+</head>
+<body>
+<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+<h2>Please Enter Your Details For Our Dating Website!</h2>
+<fieldset>
+<legend>Your face</legend>
+<label for="yourimage">Your image:</label> <input type="file" name="yourimage" id="yourimage" required><br>
+<label>Image preview:</label><img id="preview">
+</fieldset>
+
+<fieldset>
+<legend>Your general details</legend>
+<label for="name">Name:</label><input type="text" id="name" name="name" placeholder="Your full name" required><br>
+<label>Gender:</label><input type="radio" value="Male" name="gender" required>Male
+<input type="radio" value="Female" name="gender" required>Female<br>
+<label for="age">Age:</label><input type="number" id="age" name="age" required><br>
+<label for="birth">Date of birth:</label><input type="date" id="birth" name="birth"><br>
+<label for="fcolor">Favorite color:</label><input type="color" id="fcolor" name="fcolor"><br>
+<label for="country">Which country:</label>
+<select id="country" name="country">
+	<option value="No selection">No selection</option>
+	<option value="China">China</option>
+	<option value="America">America</option>
+	<option value="England">England</option>
+	<option value="France">France</option>
+	<option value="Germany">Germany</option>	
+</select>
+</fieldset>
+
+<fieldset>
+<legend>Your indicators</legend>
+<label for="height">Height:</label>Short<input type="range" id="height" name="height" min="0" max="100">Tall<br>
+<label for="salary">Salary:</label>Poor<input type="range" id="salary" name="salary" min="0" max="100">Rich
+</fieldset>
+
+<fieldset>
+<legend>Your Contact Information</legend>
+<label for="email">Email:</label><input type="email" id="email" name="email" required><br>
+<label for="mobile">Mobile:</label><input type="tel" id="mobile" name="mobile"><br>
+<label for="addr">Address:</label><textarea rows="2" cols="15" id="addr" name="addr"></textarea><br>
+<label>Method to contact you:</label>
+<input type="checkbox" value="Email" name="contactmethods"> Email
+<input type="checkbox" value="Whatsapp" name="contactmethods"> Whatsapp
+<input type="checkbox" value="In-app chat" name="contactmethods"> In-app chat
+</fieldset>
+
+<input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
