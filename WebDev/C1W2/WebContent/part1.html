@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Color game, part 1</title>
+</head>
+<body onload="do_game()">
+<script>
+	var colors = ["blue", "cyan", "gold", "gray", "green", "magenta", "orange", "red", "white", "yellow"];
+	var target_color;
+	var finished;
+	function do_game() {
+		var target_index = Math.floor(Math.random() * colors.length);
+		target_color = colors[target_index];
+		alert("target color: " + target_color + "!");
+		finished = false;
+		while (!finished) {
+			input_color = prompt("I am thinking of one of these colors:\n\n"
+					+ colors + "\n\n"
+					+ "What color am I thinking of?");
+			if (input_color == target_color)
+				finished = true;
+		}
+	}
+</script>
+</body>
+</html>
