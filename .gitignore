@@ -33,3 +33,9 @@ octave-workspace
 
 # coursera
 token.mat
+
+# webdev
+.tmp/
+bower_components/
+node_modules/
+dist/
