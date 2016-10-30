@@ -1,0 +1,19 @@
+.row-content {
+    margin-top: 100px;
+    text-align: center;
+}
+
+#img-content {
+    font-family: monospace;
+    color:brown;
+}
+
+.crop-image {
+    max-height: 300px;
+    border: 1px solid black;
+    margin: 0px auto;
+}
+
+.selected {
+    border: 6px solid red;
+}

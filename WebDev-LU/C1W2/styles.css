@@ -1,0 +1,10 @@
+h1 {
+    /* set the fonts to sans-serif */
+    font-family: sans-serif;
+    
+    /* set the text color to green */
+    color: green;
+    background: yellow;
+    /* set a border with red color and 1px wide */
+    border: 1px solid red; 
+}
