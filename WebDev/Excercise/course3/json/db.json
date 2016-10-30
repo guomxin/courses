@@ -71,7 +71,7 @@
       "image": "images/zucchipakoda.png",
       "category": "appetizer",
       "label": "",
-      "price": "1.99",
+      "price": 1.99,
       "description": "Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce",
       "comments": [
         {
@@ -103,6 +103,18 @@
           "comment": "It's your birthday, we're gonna party!",
           "author": "25 Cent",
           "date": "2011-12-02T17:57:28.556094Z"
+        },
+        {
+          "rating": "5",
+          "comment": "perfect",
+          "author": "guomao",
+          "date": "2016-10-22T07:27:50.457Z"
+        },
+        {
+          "rating": "4",
+          "comment": "good",
+          "author": "doudou",
+          "date": "2016-10-22T07:28:52.006Z"
         }
       ]
     },
@@ -112,7 +124,7 @@
       "image": "images/vadonut.png",
       "category": "appetizer",
       "label": "New",
-      "price": "1.99",
+      "price": 1.99,
       "description": "A quintessential ConFusion experience, is it a vada or is it a donut?",
       "comments": [
         {
@@ -144,6 +156,12 @@
           "comment": "It's your birthday, we're gonna party!",
           "author": "25 Cent",
           "date": "2011-12-02T17:57:28.556094Z"
+        },
+        {
+          "rating": "5",
+          "comment": "perfect\nI love the dish",
+          "author": "guomao",
+          "date": "2016-10-22T08:06:24.575Z"
         }
       ]
     },
