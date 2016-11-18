@@ -80,6 +80,7 @@ Template.website_item.events({
     }
 })
 
+var timer;
 Template.website_form.events({
     "click .js-toggle-website-form":function(event){
         $("#website_form").toggle('slow');
@@ -103,6 +104,36 @@ Template.website_form.events({
         
         return false;// stop the form submit from reloading the page
 
+    },
+    "input #url": function (event) {
+        var url = event.target.value;
+        
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            Meteor.call('remoteGet', url, {}, function(err, response) {
+               console.log("getting content for " + url);
+               if (!err) {
+                   console.log("get content for " + url);
+                   var titleReg = new RegExp("<title>([\\w\\W]+)</title>");
+                   var titleResult = titleReg.exec(response.content);
+                   if (titleResult) {
+                       console.log(titleResult);
+                       $("#title").val(titleResult[1]);
+                   } else {
+                       $("#title").val("");
+                   }
+                   
+                   var despReg = new RegExp("<meta\\s+name=\"description\"\\s+content=\"([^\"]+)");
+                   var despResult = despReg.exec(response.content);
+                   if (despResult) {
+                       console.log(despResult);
+                       $("#description").val(despResult[1]);
+                   } else {
+                       $("#description").val("");
+                   }
+               }
+            });
+        }, 500); 
     }
 });
 
