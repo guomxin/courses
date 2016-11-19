@@ -29,6 +29,8 @@ Accounts.ui.config({
     passwordSignupFields: "USERNAME_AND_EMAIL"
 });
 
+Session.set("keywords", "");
+
 /////
 // template helpers 
 /////
@@ -36,8 +38,29 @@ Accounts.ui.config({
 // helper function that returns all available websites
 Template.website_list.helpers({
     websites:function(){
-        return Websites.find({}, {sort:{upVotes:-1, downVotes:1}});
+        var keywords = Session.get("keywords").trim().split(/[\W]+/);
+        if (keywords.length == 0) {
+            return Websites.find({}, {sort:{upVotes:-1, downVotes:1}});
+        } else {
+            return Websites.find({$where: function(){
+                var titleWords = this.title.toLowerCase().split(/[\W]+/);
+                var despWords = this.description.toLowerCase().split(/[\W]+/);
+                var satisfied = true;
+                var index;
+                for (index in keywords) {
+                    var keyword = keywords[index].toLowerCase();
+                    if (keyword.length == 0) continue;
+                    if ((titleWords.indexOf(keyword) == -1) 
+                        && (despWords.indexOf(keyword) == -1)) {
+                        satisfied = false;
+                        break;
+                    }
+                }
+                return satisfied;
+            }}, {sort:{upVotes:-1, downVotes:1}}
+        );
     }
+  }
 });
 
 
@@ -80,13 +103,23 @@ Template.website_item.events({
     }
 })
 
+Template.search_form.events({
+    "submit .js-search-form": function(event) {
+        // event.preventDefault();
+        var keywords = event.target.keywords.value;
+        console.log("searching \"" + keywords + "\"");
+        Session.set("keywords", keywords);
+        return false;
+    }
+});
+
 var timer;
 Template.website_form.events({
     "click .js-toggle-website-form":function(event){
         $("#website_form").toggle('slow');
     }, 
     "submit .js-save-website-form":function(event){
-
+        //event.preventDefault();
         // here is an example of how to get the url out of the form:
         var url = event.target.url.value;
         console.log("The url they entered is: "+url);
@@ -94,12 +127,16 @@ Template.website_form.events({
         var description = event.target.description.value;
         
         //  put your website saving code in here!	
+        var userId = "anoy";
+        if (Meteor.user()) {
+            userId = Meteor.user()._id;
+        }
          Websites.insert({
             title:title, 
             url:url, 
             description:description, 
             createdOn:new Date(),
-            createdBy:Meteor.user()._id 
+            createdBy:userId 
         });
         
         return false;// stop the form submit from reloading the page
@@ -139,9 +176,14 @@ Template.website_form.events({
 
 Template.website.events({
     "submit .js-save-comment-form":function(event){
+        //event.preventDefault();
+        var username = "anoy";
+        if (Meteor.user()) {
+            username = Meteor.user().username;
+        }
         var comment = {
             comment: event.target.comment.value,
-            createdBy: Meteor.user().username,
+            createdBy: username,
             createdOn: new Date()
         };
         //console.log("The comment entered is: "+comment);
