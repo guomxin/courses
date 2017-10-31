@@ -39,3 +39,6 @@ token.mat
 bower_components/
 node_modules/
 dist/
+
+# python
+.ipynb_checkpoints/
