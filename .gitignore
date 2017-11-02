@@ -42,3 +42,4 @@ dist/
 
 # python
 .ipynb_checkpoints/
+*.pyc
