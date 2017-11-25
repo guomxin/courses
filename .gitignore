@@ -2,6 +2,7 @@
 *.log
 *.zip
 *.bak
+*.tar.gz
 
 # sbt specific
 .cache
